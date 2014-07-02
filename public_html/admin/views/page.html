@@ -1,0 +1,70 @@
+<h1 ng-show="pages.length">Pages</h1>
+<table ng-show="pages.length">
+	<thead>
+		<th>Title</th>
+		<th>Body</th>
+		<th>Pos</th>
+		<th>Active</th>
+		<th>Menu</th>
+		<th>Actions</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="page in pages">
+			<td>{{page.title}}</td>
+			<td>{{page.body}}</td>
+			<td>{{page.pos}}</td>
+			<td>{{page.active}}</td>
+			<td>{{page.menu}}</td>
+			<td>
+				<button class="btn btn-primary" ng-click="editPage(page)">Edit<button>
+				<button class="btn btn-danger" ng-click="delete(page)">Delete<button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<hr />
+
+<h2 ng-if="!editing">New Page</h2>
+<h2 ng-if="editing">Edit Page</h2>
+<form ng-submit="save(page)">
+	<label>
+		<span>Parent ID:</span>
+		<input type="number" ng-model="page.parent_id" />
+	</label>
+	<label>
+		<span>Title:</span>
+		<input type="text" ng-model="page.title" />
+	</label>
+	<label>
+		<span>Body:</span>
+		<textarea cols="80" rows="5" ng-model="page.body"></textarea>
+	</label>
+	<label>
+		<span>Meta:</span>
+		<input type="text" ng-model="page.meta" />
+	</label>
+	<label>
+		<span>Canonical:</span>
+		<input type="text" ng-model="page.canonical" />
+	</label>
+	<label>
+		<span>Pos:</span>
+		<input type="number" ng-model="page.pos" />
+	</label>
+	<label>
+		<span>Active:</span>
+		<input type="radio" ng-model="page.active" value="1" />
+		<input type="radio" ng-model="page.active" value="0" />
+	</label>
+	<label>
+		<span>Show page in menu:</span>
+		<input type="radio" ng-model="page.menu" value="1" />
+		<input type="radio" ng-model="page.menu" value="0" />
+	</label>
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<p>
+	<button ng-if="editing" class="btn btn-success" ng-click="newPage()">New Page/reset form</button>
+</p>

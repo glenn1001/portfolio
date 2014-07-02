@@ -1,0 +1,57 @@
+<h1 ng-show="socialMedias.length">SocialMedias</h1>
+<table ng-show="socialMedias.length">
+	<thead>
+		<th>Icon</th>
+		<th>Title</th>
+		<th>URL</th>
+		<th>Pos</th>
+		<th>Active</th>
+		<th>Actions</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="socialMedia in socialMedias">
+			<td><img ng-src="{{socialMedia.icon}}" alt="{{socialMedia.icon}}"/></td>
+			<td>{{socialMedia.title}}</td>
+			<td><a href="{{socialMedia.url}}" target="_blank">{{socialMedia.url}}</a></td>
+			<td>{{socialMedia.pos}}</td>
+			<td>{{socialMedia.active}}</td>
+			<td>
+				<button class="btn btn-primary" ng-click="editSocialMedia(socialMedia)">Edit<button>
+				<button class="btn btn-danger" ng-click="delete(socialMedia)">Delete<button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<hr />
+
+<h2 ng-if="!editing">New SocialMedia</h2>
+<h2 ng-if="editing">Edit SocialMedia</h2>
+<form ng-submit="save(socialMedia)">
+	<label>
+		<span>Icon:</span>
+		<input type="text" ng-model="socialMedia.icon" />
+	</label>
+	<label>
+		<span>Title:</span>
+		<input type="text" ng-model="socialMedia.title" />
+	</label>
+	<label>
+		<span>URL:</span>
+		<input type="text" ng-model="socialMedia.url" />
+	</label>
+	<label>
+		<span>Pos:</span>
+		<input type="number" ng-model="socialMedia.pos" />
+	</label>
+	<label>
+		<span>Active:</span>
+		<input type="radio" ng-model="socialMedia.active" value="1" />
+		<input type="radio" ng-model="socialMedia.active" value="0" />
+	</label>
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<p>
+	<button ng-if="editing" class="btn btn-success" ng-click="newSocialMedia()">New SocialMedia/reset form</button>
+</p>

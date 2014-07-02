@@ -2,13 +2,10 @@
 
 class Project extends \Eloquent {
 	protected $fillable = [
-		'image',
+		'icon',
 		'title',
-		'body',
-		'meta',
-		'canonical',
+		'url',
 		'pos',
-		'active',
-		'menu'
+		'active'
 	];
 }
