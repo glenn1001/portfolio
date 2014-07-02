@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://new.glennblom.nl',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -121,7 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
+		// 'Way\Generators\GeneratorsServiceProvider',
 
 	),
 
