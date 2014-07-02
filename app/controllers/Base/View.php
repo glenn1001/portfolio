@@ -21,7 +21,25 @@ class View extends \View {
 			
 			default:
 				$view = $format . '.' . $view;
-				return parent::make($view, array($model => $data));
+
+				// Store model for page
+				$data = array(
+					$model => $data
+				);
+
+				// Get data for header/navigation
+				$data['nav'] = (object) array(
+					'projects' 	=> \Project::where('active', 1)->where('menu', 1)->orderBy('pos', 'DESC')->take(10)->get(),
+					'pages' 	=> \Page::where('parent_id', 0)->where('active', 1)->where('menu', 1)->orderBy('pos', 'ASC')->take(10)->get()
+				);
+
+				// Get data for footer
+				$data['footer'] = (object) array(
+					'projects' 		=> \Project::where('active', 1)->orderBy('created_at', 'DESC')->take(10)->get(),
+					'social_medias' => \SocialMedia::where('active', 1)->orderBy('pos', 'ASC')->take(10)->get()
+				);
+
+				return parent::make($view, $data);
 				break;
 		}
 	}

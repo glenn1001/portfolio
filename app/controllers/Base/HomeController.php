@@ -5,7 +5,9 @@ namespace Base;
 class HomeController extends Controller {
 
 	public function index() {
-		return View::make('home.index');
+		$data = array();
+
+		return View::make('home.index', $data);
 	}
 
 }
