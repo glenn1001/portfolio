@@ -18,7 +18,7 @@ class Controller extends \Base\Controller {
 		$newModel = new $modelName();
 		$data = $newModel->orderBy('id', 'DESC')->get();
 
-		return View::make($view, array($model . 's' => $data));
+		return View::make($view, $data, $model . 's');
 	}
 
 	public function get($model, $id) {
@@ -33,7 +33,7 @@ class Controller extends \Base\Controller {
 		$newModel = new $modelName();
 		$data = $newModel->findOrFail($id);
 
-		return View::make($view, array($model => $data));
+		return View::make($view, $data, $model);
 	}
 
 	public function post($model) {
@@ -59,7 +59,7 @@ class Controller extends \Base\Controller {
 		// Create new resource
 		$data = $newModel->create($insert);
 
-		return View::make($view, array($model => $data));
+		return View::make($view, $data, $model);
 	}
 
 	public function patch($model, $id) {
@@ -86,10 +86,13 @@ class Controller extends \Base\Controller {
 		// Save changes
 		$newModel->save();
 
-		return View::make($view, array($model => $newModel));
+		return View::make($view, $newModel, $model);
 	}
 
-	public function delete($model, $id) {
+	public function delete($model, $id = null) {
+		if ($id == null)
+			$id = \Input::get('id');
+
 		$model = strtolower($model);
 		$view = 'api.' . $model . '.show';
 		
@@ -106,7 +109,15 @@ class Controller extends \Base\Controller {
 		$data = (object) $newModel->toArray();
 		$newModel->delete();
 
-		return View::make($view, array($model => $data));
+		return View::make($view, $data, $model);
+	}
+
+	public function options($model, $id = null) {
+		return \Response::make(null, 200, array(
+			'Access-Control-Allow-Origin' => '*',
+			'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PATCH, DELETE',
+			'Access-Control-Allow-Headers' => 'X-Requested-With, content-type'
+		));
 	}
 
 }

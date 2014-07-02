@@ -16,4 +16,7 @@ Route::get('/{model}', '\API\Controller@getCollection');
 Route::get('/{model}/{id}', '\API\Controller@get');
 Route::post('/{model}', '\API\Controller@post');
 Route::patch('/{model}/{id}', '\API\Controller@patch');
+Route::delete('/{model}', '\API\Controller@delete');
 Route::delete('/{model}/{id}', '\API\Controller@delete');
+Route::options('/{model}', '\API\Controller@options');
+Route::options('/{model}/{id}', '\API\Controller@options');

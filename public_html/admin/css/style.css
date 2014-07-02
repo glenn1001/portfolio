@@ -2,3 +2,70 @@
 	margin: 0;
 	padding: 0;
 }
+
+hr {
+	border-color: #000000;
+	border-width: 2px;
+}
+
+p {
+	padding: 10px 0;
+}
+
+div#container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+header nav ul {
+	list-style: none;
+}
+
+header nav ul li {
+	display: inline-block;
+	padding: 5px;
+	background: #ebecec;
+	font-size: 30px;
+}
+
+header nav ul li.active {
+	background: #ccc;
+}
+
+table {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+table thead {
+	background: #ccc;
+	color: #000;
+	font-weight: bold;
+}
+
+table thead th, table tbody tr td {
+	vertical-align: top;
+	padding: 5px;
+	text-align: left;
+}
+
+table tbody tr:nth-child(odd) {
+	background: #ebecec;
+}
+
+form label {
+	display: block;
+	padding: 5px;
+}
+
+form label:nth-child(odd) {
+	background: #ebecec;
+}
+
+form label span {
+	display: inline-block;
+	width: 200px;
+	cursor: pointer;
+}

@@ -4,24 +4,24 @@ namespace Base;
 
 class View extends \View {
 
-	public static function make($view, $data = array()) {
+	public static function make($view, $data = array(), $model = 'data') {
 		$format = self::getFormat();
 
 		switch ($format) {
 			case 'json':
-				return \Response::json($data)->setCallback(\Input::get('callback'));
+				return \Response::json($data, '200', array('Access-Control-Allow-Origin' => '*'))->setCallback(\Input::get('callback'));
 				break;
 
 			case 'xml':
 				$view = $format . '.' . $view;
-				$response = \Response::make(parent::make($view, $data));
+				$response = \Response::make(parent::make($view, array($model => $data)));
 				$response->header('Content-Type', 'application/xml');
 				return $response;
 				break;
 			
 			default:
 				$view = $format . '.' . $view;
-				return parent::make($view, $data);
+				return parent::make($view, array($model => $data));
 				break;
 		}
 	}
