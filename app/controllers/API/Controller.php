@@ -89,4 +89,24 @@ class Controller extends \Base\Controller {
 		return View::make($view, array($model => $newModel));
 	}
 
+	public function delete($model, $id) {
+		$model = strtolower($model);
+		$view = 'api.' . $model . '.show';
+		
+		$modelName = '\\';
+		foreach (explode('_', $model) as $name) {
+			$modelName .= ucfirst($name);
+		}
+
+		// Get model
+		$newModel = new $modelName();
+		$newModel = $newModel->findOrFail($id);
+
+		// Delete changes
+		$data = (object) $newModel->toArray();
+		$newModel->delete();
+
+		return View::make($view, array($model => $data));
+	}
+
 }
