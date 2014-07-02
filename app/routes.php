@@ -15,3 +15,4 @@ Route::get('/', '\Base\HomeController@index');
 Route::get('/{model}', '\API\Controller@getCollection');
 Route::get('/{model}/{id}', '\API\Controller@get');
 Route::post('/{model}', '\API\Controller@post');
+Route::patch('/{model}/{id}', '\API\Controller@patch');
