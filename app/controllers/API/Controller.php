@@ -36,4 +36,30 @@ class Controller extends \Base\Controller {
 		return View::make($view, array($model => $data));
 	}
 
+	public function post($model) {
+		$model = strtolower($model);
+		$view = 'api.' . $model . '.show';
+		
+		$modelName = '\\';
+		foreach (explode('_', $model) as $name) {
+			$modelName .= ucfirst($name);
+		}
+
+		$newModel = new $modelName();
+		
+		// Get input
+		$json = file_get_contents('php://input');
+		
+		// Place input into array for an insert
+		$insert = array();
+		foreach (json_decode($json) as $k => $v) {
+			$insert[$k] = $v;
+		}
+
+		// Create new resource
+		$data = $newModel->create($insert);
+
+		return View::make($view, array($model => $data));
+	}
+
 }
