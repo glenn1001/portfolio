@@ -3,9 +3,8 @@
 // Page controller (for viewing all pages, creating new pages, updating and deleting existing pages)
 portfolioApp.controller('PageCtrl', [
 	'$scope',
-	'$route',
 	'Page',
-	function($scope, $route, Page) {
+	function($scope, Page) {
 		// Create new empty page (for form)
 		$scope.page = new Page();
 

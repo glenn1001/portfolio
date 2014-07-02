@@ -3,9 +3,8 @@
 // Project controller (for viewing all projects, creating new projects, updating and deleting existing projects)
 portfolioApp.controller('ProjectCtrl', [
 	'$scope',
-	'$route',
 	'Project',
-	function($scope, $route, Project) {
+	function($scope, Project) {
 		// Create new empty project (for form)
 		$scope.project = new Project();
 

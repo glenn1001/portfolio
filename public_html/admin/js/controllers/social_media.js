@@ -3,9 +3,8 @@
 // SocialMedia controller (for viewing all socialMedias, creating new socialMedias, updating and deleting existing socialMedias)
 portfolioApp.controller('SocialMediaCtrl', [
 	'$scope',
-	'$route',
 	'SocialMedia',
-	function($scope, $route, SocialMedia) {
+	function($scope, SocialMedia) {
 		// Create new empty socialMedia (for form)
 		$scope.socialMedia = new SocialMedia();
 

@@ -27,6 +27,7 @@
 	<script type="text/javascript" src="/js/main.js"></script>
 
 	<!-- Admin controllers -->
+	<script type="text/javascript" src="/js/controllers/nav.js"></script>
 	<script type="text/javascript" src="/js/controllers/page.js"></script>
 	<script type="text/javascript" src="/js/controllers/project.js"></script>
 	<script type="text/javascript" src="/js/controllers/social_media.js"></script>
@@ -34,15 +35,15 @@
 <body>
 	<div id="container">
 		<header>
-			<nav>
+			<nav ng-controller="NavCtrl">
 				<ul>
-					<li>
+					<li ng-class="checkActive('/project')">
 						<a href="/project">Projects</a>
 					</li>
-					<li>
+					<li ng-class="checkActive('/page')">
 						<a href="/page">Pages</a>
 					</li>
-					<li>
+					<li ng-class="checkActive('/social_media')">
 						<a href="/social_media">Social Media</a>
 					</li>
 				</ul>
